@@ -123,7 +123,8 @@ body {
   letter-spacing: 1px;
 }
 
-#next-canvas {
+#next-canvas,
+#bucket-canvas {
   display: block;
   border: 1px solid var(--border);
   background: var(--canvas-bg);
@@ -143,6 +144,7 @@ body {
   color: var(--muted);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 4px;
 }
 
@@ -156,11 +158,20 @@ kbd {
   color: var(--kbd-text);
 }
 
-/* ---- Tema ---- */
+/* ---- Columna izquierda ---- */
 .side-left {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding-top: 4px;
+}
+
+.side-left .panel-section {
   align-items: flex-end;
 }
+
+/* ---- Tema ---- */
 
 #theme-btn {
   width: 36px;

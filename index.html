@@ -11,17 +11,32 @@
     <div class="game-container">
       <h1 class="title">TETRIS</h1>
 
-      <aside class="side-left panel-section">
-        <span class="label">THEME</span>
-        <button id="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
+      <aside class="side-left">
+        <div class="panel-section controls">
+          <span class="label">CONTROLS</span>
+          <ul>
+            <li>move <kbd>←</kbd><kbd>→</kbd></li>
+            <li>rotate <kbd>↑</kbd></li>
+            <li>soft drop <kbd>↓</kbd></li>
+            <li>hard drop <kbd>Space</kbd></li>
+            <li>bucket <kbd>Shift</kbd></li>
+            <li>pause <kbd>P</kbd></li>
+            <li>theme <kbd>T</kbd></li>
+          </ul>
+        </div>
+
+        <div class="panel-section">
+          <span class="label">THEME</span>
+          <button id="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
       </aside>
 
       <canvas id="board" width="300" height="600"></canvas>
@@ -45,16 +60,9 @@
           <canvas id="next-canvas" width="120" height="120"></canvas>
         </div>
 
-        <div class="panel-section controls">
-          <span class="label">CONTROLS</span>
-          <ul>
-            <li><kbd>←</kbd><kbd>→</kbd> move</li>
-            <li><kbd>↑</kbd> rotate</li>
-            <li><kbd>↓</kbd> soft drop</li>
-            <li><kbd>Space</kbd> hard drop</li>
-            <li><kbd>P</kbd> pause</li>
-            <li><kbd>T</kbd> theme</li>
-          </ul>
+        <div class="panel-section">
+          <span class="label">BUCKET</span>
+          <canvas id="bucket-canvas" width="120" height="120"></canvas>
         </div>
       </aside>
 

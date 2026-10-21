@@ -24,13 +24,14 @@ Verification is manual: load the page and play.
 - **Collision is the single source of truth for movement.** `collide(shape, ox, oy)` is used for moves, rotation kicks (`tryRotate`, offsets `[0,-1,1,-2,2]`), gravity, ghost projection (`ghostY`) and game-over detection in `spawn()`. Rows with `y < 0` are allowed (above the board).
 - **Loop.** `requestAnimationFrame(loop)` accumulates `dt` into `dropAccum` and drops one row when it exceeds `dropInterval`; `draw()` redraws the full board every frame. Pause and game over stop the loop via `cancelAnimationFrame(animId)`; unpausing restarts it by calling `loop()` with a fresh `lastTime`.
 - **Lock sequence:** `lockPiece()` = `merge()` then `clearLines()` (updates score/lines/level/speed) then `spawn()` (promotes `next`, draws preview, may call `endGame()`).
+- **Bucket (hold):** `holdPiece()` (Shift) stores `current.type` in `bucket`, or swaps with it via `createPiece(type)` (fresh spawn rotation/position). `canHold` allows one hold per piece; `spawn()` resets it. `drawBucket()` dims the preview while `canHold` is false.
 - **Scoring/speed:** `LINE_SCORES[cleared] * level`; soft drop +1/row, hard drop +2/row; level = `floor(lines/10)+1`; `dropInterval = max(100, 1000 - (level-1)*90)`.
 
 ## Coupled values
 
 - `<canvas id="board">` size in `index.html` must equal `COLS*BLOCK` x `ROWS*BLOCK` (currently 300x600).
-- `<canvas id="next-canvas">` is 120x120, which assumes the 4x4 preview grid with `NB = 30` in `drawNext()`.
-- DOM element IDs used by `game.js`: `board`, `next-canvas`, `score`, `lines`, `level`, `overlay`, `overlay-title`, `overlay-score`, `restart-btn`. The overlay is shown/hidden by toggling the `hidden` class.
+- `<canvas id="next-canvas">` and `<canvas id="bucket-canvas">` are 120x120, which assumes the 4x4 preview grid with `NB = 30` in `drawPreview()`.
+- DOM element IDs used by `game.js`: `board`, `next-canvas`, `bucket-canvas`, `theme-btn`, `score`, `lines`, `level`, `overlay`, `overlay-title`, `overlay-score`, `restart-btn`. The overlay is shown/hidden by toggling the `hidden` class.
 
 ## Conventions
 
