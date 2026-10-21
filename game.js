@@ -283,7 +283,9 @@ function setTheme(name) {
   document.documentElement.dataset.theme = theme;
   palette = theme === 'light' ? LIGHT_COLORS : COLORS;
   gridColor = getComputedStyle(document.documentElement).getPropertyValue('--grid').trim();
-  themeBtn.textContent = theme === 'light' ? 'Dark mode' : 'Light mode';
+  const label = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+  themeBtn.setAttribute('aria-label', label);
+  themeBtn.title = label;
   themeBtn.setAttribute('aria-pressed', String(theme === 'light'));
   try { localStorage.setItem(THEME_KEY, theme); } catch (_) {}
   // The loop is stopped while paused / game over, so redraw manually

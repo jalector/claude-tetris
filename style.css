@@ -62,8 +62,10 @@ body {
   font-weight: 800;
   letter-spacing: 4px;
   color: var(--accent);
-  text-align: center;
-  margin-bottom: 16px;
+  text-align: left;
+  /* Sits in the board column, left-aligned with the canvas */
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .wrapper {
@@ -71,9 +73,16 @@ body {
 }
 
 .game-container {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+  row-gap: 16px;
+  align-items: start;
+}
+
+.game-container > :not(.title) {
+  grid-row: 2;
 }
 
 #board {
@@ -148,13 +157,22 @@ kbd {
 }
 
 /* ---- Tema ---- */
+.side-left {
+  padding-top: 4px;
+  align-items: flex-end;
+}
+
 #theme-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   background: var(--kbd-bg);
   color: var(--text);
   border: 1px solid var(--kbd-border);
   border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 12px;
   cursor: pointer;
 }
 
@@ -162,10 +180,29 @@ kbd {
   border-color: var(--accent);
 }
 
+#theme-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+#theme-btn .icon-moon {
+  display: none;
+}
+
+[data-theme="light"] #theme-btn .icon-sun {
+  display: none;
+}
+
+[data-theme="light"] #theme-btn .icon-moon {
+  display: block;
+}
+
 /* ---- Overlay ---- */
 .overlay {
   position: absolute;
   inset: 0;
+  /* Covers the game row only, not the title */
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
