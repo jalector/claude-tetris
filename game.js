@@ -243,7 +243,7 @@ function endGame() {
   gameOver = true;
   cancelAnimationFrame(animId);
   overlayTitle.textContent = 'GAME OVER';
-  overlayScore.textContent = `Puntuación: ${score.toLocaleString()}`;
+  overlayScore.textContent = `Score: ${score.toLocaleString()}`;
   overlay.classList.remove('hidden');
 }
 
@@ -255,7 +255,7 @@ function togglePause() {
     loop(lastTime);
   } else {
     cancelAnimationFrame(animId);
-    overlayTitle.textContent = 'PAUSA';
+    overlayTitle.textContent = 'PAUSED';
     overlayScore.textContent = '';
     overlay.classList.remove('hidden');
   }
@@ -283,7 +283,7 @@ function setTheme(name) {
   document.documentElement.dataset.theme = theme;
   palette = theme === 'light' ? LIGHT_COLORS : COLORS;
   gridColor = getComputedStyle(document.documentElement).getPropertyValue('--grid').trim();
-  themeBtn.textContent = theme === 'light' ? 'Modo oscuro' : 'Modo claro';
+  themeBtn.textContent = theme === 'light' ? 'Dark mode' : 'Light mode';
   themeBtn.setAttribute('aria-pressed', String(theme === 'light'));
   try { localStorage.setItem(THEME_KEY, theme); } catch (_) {}
   // The loop is stopped while paused / game over, so redraw manually

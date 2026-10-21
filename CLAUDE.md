@@ -34,5 +34,5 @@ Verification is manual: load the page and play.
 
 ## Conventions
 
-- User-facing text (HTML labels, overlay messages, README) is in Spanish; code identifiers and comments are in English.
+- All user-facing text (HTML labels, overlay messages, button text, aria labels) is in English, as are code identifiers and comments.
 - Keyboard input uses `e.code` (`ArrowLeft`, `KeyP`, `Space`, ...), not `e.key`.
