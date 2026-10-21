@@ -13,6 +13,7 @@ const COLORS = [
   '#e57373', // Z - red
   '#90caf9', // J - pale blue
   '#ffb74d', // L - orange
+  '#f48fb1', // · - pink
 ];
 
 // Darker variants so pieces keep contrast on the light background
@@ -25,6 +26,7 @@ const LIGHT_COLORS = [
   '#e53935', // Z
   '#1e88e5', // J
   '#fb8c00', // L
+  '#d81b60', // ·
 ];
 
 const PIECES = [
@@ -36,6 +38,7 @@ const PIECES = [
   [[5,5,0],[0,5,5],[0,0,0]],                  // Z
   [[6,0,0],[6,6,6],[0,0,0]],                  // J
   [[0,0,7],[7,7,7],[0,0,0]],                  // L
+  [[8]],                                       // · (1x1)
 ];
 
 const LINE_SCORES = [0, 100, 300, 500, 800];
@@ -65,7 +68,7 @@ function createBoard() {
 }
 
 function randomPiece() {
-  const type = Math.floor(Math.random() * 7) + 1;
+  const type = Math.floor(Math.random() * (PIECES.length - 1)) + 1;
   const shape = PIECES[type].map(row => [...row]);
   return { type, shape, x: Math.floor(COLS / 2) - Math.floor(shape[0].length / 2), y: 0 };
 }
